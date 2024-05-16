@@ -1,19 +1,26 @@
-import Carousel from "../../components/carousel"
-import Header from "../../components/header"
-import "./index.scss"
+import Carousel from "../../components/carousel";
+import Header from "../../components/header";
+import "./index.scss";
 
 function Home() {
   return (
     <div>
-<Header/>
+      <Header />
+      <div className="trending">
+        <Carousel numberOfSlide={1} category={"Trending"} />
+      </div>
 
-<Carousel numberOfSlide={1} category={"Trending"}/>
-<div className="tittle">Action</div>
-<Carousel numberOfSlide={3} category={"Action"}/>
-<div className="tittle">Comedy</div>
-<Carousel numberOfSlide={3} category={"Comedy"}/>
+      
+      <div className="action">
+        <Carousel numberOfSlide={3} category={"Action"} isUseNavigation tittle={"Action Movies"} />
+      </div>
+
+     
+      <div className="comedy">
+        <Carousel numberOfSlide={3} category={"Comedy"} isUseNavigation tittle={"Comedy Movies"} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
