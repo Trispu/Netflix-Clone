@@ -19,6 +19,9 @@ function Home() {
       <div className="comedy">
         <Carousel numberOfSlide={3} category={"Comedy"} isUseNavigation tittle={"Comedy Movies"} />
       </div>
+      <div className="horror">
+        <Carousel numberOfSlide={3} category={"Horror"} isUseNavigation tittle={"Horror Movies"} />
+      </div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { useForm } from "antd/es/form/Form";
 import uploadFile from "../../utils/upload";
+
 function MovieManagement() {
   const [form] = useForm();
   const [dataSource, setDataSource] = useState([]);
@@ -103,6 +104,8 @@ function MovieManagement() {
 
   return (
     <div>
+      
+      
       <Button type="primary" onClick={handleShowModal}>
         Add new movie
       </Button>
