@@ -20,7 +20,7 @@ export default function Carousel({
   const [movies, setMovies] = useState([]);
   const fetchMovies = async () => {
     const response = await axios.get(
-      "https://6627a8deb625bf088c09302d.mockapi.io/Movie"
+      "https://6645bbb8b8925626f892ee61.mockapi.io/movie"
     );
     console.log(response.data);
     setMovies(response.data);

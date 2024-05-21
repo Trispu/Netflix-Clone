@@ -1,11 +1,11 @@
 import Carousel from "../../components/carousel";
-import Header from "../../components/header";
+
 import "./index.scss";
 
 function Home() {
   return (
     <div>
-      <Header />
+     
       <div className="trending">
         <Carousel numberOfSlide={1} category={"Trending"} />
       </div>

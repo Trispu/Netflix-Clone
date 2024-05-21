@@ -1,14 +1,20 @@
-import { Button, Form, Image, Input, Modal, Select, Table, Upload } from "antd";
+import { Button, Form, Image, Input, Modal, Popconfirm, Select, Table, Upload } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { useForm } from "antd/es/form/Form";
 import uploadFile from "../../utils/upload";
-
+import "./index.scss"
 function MovieManagement() {
   const [form] = useForm();
   const [dataSource, setDataSource] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+ const handleDeleteMovie =async (id)=>{
+    const response= await axios.delete(`https://6645bbb8b8925626f892ee61.mockapi.io/movie/${id}`);
+    console.log(response);
+    const listAfterDelete= dataSource.filter((movie)=>movie.id!==id);
+    setDataSource(listAfterDelete);
+  }
   const columns = [
     {
       title: "Name",
@@ -21,6 +27,26 @@ function MovieManagement() {
       dataIndex: "poster_path",
       key: "poster_path",
       render: (poster_path) => <Image src={poster_path} width={200} />,
+    },
+    {
+      title: "Action",
+      dataIndex: "id",
+      key: "id",
+      render: (id) => <>
+      <Popconfirm
+    title="Delete the task"
+    description="Are you sure to delete this task?"
+    onConfirm={()=>handleDeleteMovie(id)}
+  
+    okText="Yes"
+    cancelText="No"
+  >
+    <Button type="primary" danger>
+      Delete
+      </Button>
+  </Popconfirm>
+     
+      </>
     },
   ];
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -62,7 +88,7 @@ function MovieManagement() {
 
   async function fetchMovies() {
     const response = await axios.get(
-      "https://6627a8deb625bf088c09302d.mockapi.io/Movie"
+      "https://6645bbb8b8925626f892ee61.mockapi.io/movie"
     );
 
     console.log(response.data);
@@ -87,7 +113,7 @@ function MovieManagement() {
     const url = await uploadFile(values.poster_path.file.originFileObj);
     values.poster_path = url;
 
-    axios.post("https://6627a8deb625bf088c09302d.mockapi.io/Movie", values);
+    axios.post("https://6645bbb8b8925626f892ee61.mockapi.io/movie", values);
 
     setDataSource([...dataSource, values]);
 
@@ -103,10 +129,10 @@ function MovieManagement() {
   }, []);
 
   return (
-    <div>
+    <div className="moviemane">
       
       
-      <Button type="primary" onClick={handleShowModal}>
+  <Button  type="primary"  onClick={handleShowModal} >
         Add new movie
       </Button>
       <Table columns={columns} dataSource={dataSource} />

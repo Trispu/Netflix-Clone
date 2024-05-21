@@ -5,12 +5,13 @@
     padding: 10px 350px;
     background-color: rgba(0,0,0,0.3);
     align-items: center;
-    position:absolute;
+    
     top:0;
     right: 0;
     left: 0;
     z-index: 13;
     backdrop-filter: blur(3.5px);
+    position: relative;
     ul{
         display: flex;
         gap: 35px;
@@ -24,5 +25,26 @@
             color: #fff;
         }
     }
-   
+  &_search{
+    position: absolute;
+    top: -100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 20px 350px;
+    display: flex;
+    transition: all 0.3s;
+ 
+ 
+    input{
+        outline: none;
+        border: none;
+        flex-grow: 1;
+        font-size: 20px;
+    }
+    &.active{
+        top: 100%;
+        opacity: 1;
+    }
+  }
 }
