@@ -15,7 +15,7 @@ function App() {
       element: <Layout/>,
       children: [
         {
-          path: "/",
+          path: "/home",
           element:<Home/>
         },
         {
@@ -23,7 +23,7 @@ function App() {
           element:<MovieManagement/>
         },
         {
-          path: "/login",
+          path: "/",
           element:<Login/>
         },
       ]

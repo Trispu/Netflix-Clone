@@ -11,7 +11,7 @@ function Header() {
             <input placeholder="Search for a movie or show..." type="text" />
             <CloseOutlined onClick={()=> setShowSearch(false)}/>
         </div>
-    <Link to={"/"}>
+    <Link to={"/home"}>
     <div className="header__logo">
         <img src="https://seekvectors.com/files/download/Netflix-Logo-19.png"
         alt=""
@@ -20,10 +20,10 @@ function Header() {
     <nav className="header__nav">
         <ul>
             <li>
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
             </li>
-            <li>
-                <Link >Movies</Link>
+            <li >
+                <Link to={"/movie-management"}>Movies</Link>
             </li>
             <li>
                 <Link to="/movie-management">Movie Management</Link>
